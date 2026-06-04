@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Toolkit</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon.png" type="image/png">
+    </head>
+    <body>
+        <div id="header" class="header">
+            <h1>JavaScript Toolkit</h1>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="json">
+                JSON Formatter
+            </button>
+            <button class="tab-btn" data-tab="base64">
+                Base64 Encoder / Decoder
+            </button>
+        </div>
+
+        <div id="json-tab" class="tab-content active">
+            <h3>JSON Formatter</h3>
+            <textarea class="tool-input" id="json-input" placeholder="Paste JSON here..."></textarea>
+            <div class="button-row">
+                <button id="format-btn">Format JSON</button>
+            </div>
+            <pre class="tool-output" id="json-output">Formatted JSON will appear here...</pre>
+        </div>
+
+        <div id="base64-tab" class="tab-content">
+            <h3>Base64 Encoder / Decoder</h3>
+            <textarea class="tool-input" id="base64-input" placeholder="Enter text or Base64..."></textarea>
+            <div class="button-row">
+                <button id="encode-btn">Encode</button>
+                <button id="decode-btn">Decode</button>
+            </div>
+            <pre class="tool-output" id="base64-output">Result will appear here...</pre>
+        </div>
+
+        <div class="tool-section">
+            <h3>Web Terminal</h3>
+            <div id="console" class="console"></div>
+            <input type="text" class="input" id="user-input" placeholder="Enter JavaScript code...">
+        </div>
+
+        <script type="module" src="./app.js"></script>
+    </body>
+</html>
+<!-- index.html -->
