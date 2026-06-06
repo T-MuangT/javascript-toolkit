@@ -1,16 +1,16 @@
 export class JsonTool {
-    static format(input) {
-        try {
-            const parsed = JSON.parse(input);
-            return { 
-                success: true, data: JSON.stringify(parsed, null, 4) 
-            };
-        } catch (e) {
-            console.error("JSON Parse Error:", e.message);
-            return { 
-                success: false, data: "Error: " + e.message 
-            };
-        }
+    static bind(btnId, inId, outId, logger = console.log) {
+        document.getElementById(btnId).addEventListener('click', () => {
+            const input = document.getElementById(inId).value;
+            try {
+                const formatted = JSON.stringify(JSON.parse(input), null, 2);
+                document.getElementById(outId).textContent = formatted;
+                logger(`JSON successfully formatted.`, 'INFO');
+            }
+            catch (e) {
+                logger(`JSON Error: ${e.message}`, 'ERROR');
+            }
+        });
     }
 
     static handleFormat(inputId, outputId) {

@@ -1,6 +1,6 @@
 {
   "name": "javascript-toolkit",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A lightweight JavaScript toolkit for building web applications and utilities.",
   "main": "app.js",
   "scripts": {
@@ -21,5 +21,9 @@
   "homepage": "https://github.com/T-MuangT/javascript-toolkit#readme",
   "devDependencies": {
     "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "serialport": "^13.0.0",
+    "ws": "^8.21.0"
   }
 }

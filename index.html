@@ -27,7 +27,7 @@
             <div class="button-row">
                 <button id="format-btn">Format JSON</button>
             </div>
-            <pre class="tool-output" id="json-output">Formatted JSON will appear here...</pre>
+            <pre class="tool-output" id="json-output">Result will appear here...</pre>
         </div>
 
         <div id="base64-tab" class="tab-content">
@@ -41,9 +41,18 @@
         </div>
 
         <div class="tool-section">
-            <h3>Web Terminal</h3>
-            <div id="console" class="console"></div>
-            <input type="text" class="input" id="user-input" placeholder="Enter JavaScript code...">
+            <div class="terminal-toolbar">
+                <h3>Web Terminal</h3>
+                <div class="terminal-controls">
+                    <!-- Picker lives here, JS reads it on button click -->
+                    <select id="terminal-type-picker">
+                        <option value="serial">Serial</option>
+                        <option value="backend">Backend</option>
+                    </select>
+                    <button id="add-term-btn">+ New Terminal</button>
+                </div>
+            </div>
+            <div id="terminal-container"></div>
         </div>
 
         <script type="module" src="./app.js"></script>

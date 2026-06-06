@@ -1,66 +1,52 @@
-import { WebConsole } from './console/web-console.js';
+import { ConsoleManager } from './console/console-manager.js';
 import { JsonTool } from './tools/json-tool.js';
 import { Base64Tool } from './tools/base64-tool.js';
 
-new WebConsole('console', 'user-input');
+document.addEventListener('DOMContentLoaded', () => {
+    const consoleContainer = document.getElementById('terminal-container');
+    if (!consoleContainer) {
+        console.error('terminal-container not found in DOM');
+        return;
+    }
 
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    const manager = new ConsoleManager(consoleContainer);
 
-        document
-            .querySelectorAll('.tab-btn')
-            .forEach(b => b.classList.remove('active'));
+    manager.createTerminal('frontend', 'frontend');
+    manager.createTerminal('serial-1', 'serial');
 
-        document
-            .querySelectorAll('.tab-content')
-            .forEach(t => t.classList.remove('active'));
+    // Loggers defined after terminals exist, so route() is always safe to call
+    const frontendLogger = (msg, type) => manager.route('frontend', msg, type);
+    const serialLogger = (msg, type) => manager.route('serial-1', msg, type);
 
-        btn.classList.add('active');
+    setupTabs();
+    JsonTool.bind('format-btn', 'json-input', 'json-output', frontendLogger);
+    Base64Tool.bind('encode-btn', 'decode-btn', 'base64-input', 'base64-output', frontendLogger);
 
-        document
-            .getElementById(
-                btn.dataset.tab + '-tab'
-            )
-            .classList.add('active');
-    });
+    setupTerminalPicker(manager);
 });
 
-document
-    .getElementById('format-btn')
-    .addEventListener('click', () => {
+function setupTerminalPicker(manager) {
+    const btn = document.getElementById('add-term-btn');
+    const picker = document.getElementById('terminal-type-picker'); // <select> in your HTML
 
-        JsonTool.handleFormat(
-            'json-input',
-            'json-output'
-        );
+    btn.addEventListener('click', () => {
+        const type = picker.value;
+        const name = `${type}-${Date.now()}`;
+        try {
+            manager.createTerminal(name, type);
+        } catch (err) {
+            console.error(err.message);
+        }
     });
+}
 
-document
-    .getElementById('encode-btn')
-    .addEventListener('click', () => {
-
-        const input =
-            document.getElementById('base64-input').value;
-
-        const result =
-            Base64Tool.encode(input);
-
-        document.getElementById(
-            'base64-output'
-        ).textContent = result.data;
+function setupTabs() {
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
+        });
     });
-
-document
-    .getElementById('decode-btn')
-    .addEventListener('click', () => {
-
-        const input =
-            document.getElementById('base64-input').value;
-
-        const result =
-            Base64Tool.decode(input);
-
-        document.getElementById(
-            'base64-output'
-        ).textContent = result.data;
-    });
+} // app.js

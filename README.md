@@ -8,10 +8,9 @@ This repository contains reusable JavaScript tools, examples, and utilities for 
 
 ## Features
 
-- Common utility functions
-- Modular components
-- Example projects and demos
-- Easy setup and usage
+- Terminal emulator for both browser console, serial, and backend
+- JSON formatting tool
+- Base64 encoding and decoding tool
 
 ## Getting Started
 
