@@ -1,0 +1,25 @@
+{
+  "name": "javascript-toolkit",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript toolkit for building web applications and utilities.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server --port=8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T-MuangT/javascript-toolkit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/T-MuangT/javascript-toolkit/issues"
+  },
+  "homepage": "https://github.com/T-MuangT/javascript-toolkit#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

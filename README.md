@@ -15,15 +15,8 @@ This repository contains reusable JavaScript tools, examples, and utilities for 
 
 ## Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/javascript-toolkit.git
-   ```
-2. Install dependencies (if applicable):
-   ```bash
-   npm install
-   ```
-3. Start using the toolkit in your project.
+1. Clone the repository `git clone https://github.com/T-MuangT/javascript-toolkit.git`
+2. `npm install && npm start`
 
 ## Usage
 
