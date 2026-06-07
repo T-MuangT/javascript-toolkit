@@ -1,7 +1,6 @@
 import { ConsoleManager } from './console/console-manager.js';
 import { ToolManager } from './tools/tool-manager.js';
 
-// WebSocket connection to the SSH relay server
 const sshSocket = new WebSocket('ws://localhost:8080');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,11 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const manager = new ConsoleManager(consoleContainer);
-
     manager.createTerminal('frontend', 'frontend');
     manager.createTerminal('ssh-1', 'ssh');
 
-    // Loggers defined after terminals exist, so route() is always safe to call
     const frontendLogger = (msg, type) => manager.route('frontend', msg, type);
     const sshLogger = (msg, type) => manager.route('ssh-1', msg, type);
 
