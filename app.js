@@ -1,6 +1,8 @@
 import { ConsoleManager } from './console/console-manager.js';
-import { JsonTool } from './tools/json-tool.js';
-import { Base64Tool } from './tools/base64-tool.js';
+import { ToolManager } from './tools/tool-manager.js';
+
+// WebSocket connection to the SSH relay server
+const sshSocket = new WebSocket('ws://localhost:8080');
 
 document.addEventListener('DOMContentLoaded', () => {
     const consoleContainer = document.getElementById('terminal-container');
@@ -18,10 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const frontendLogger = (msg, type) => manager.route('frontend', msg, type);
     const sshLogger = (msg, type) => manager.route('ssh-1', msg, type);
 
+    new ToolManager(frontendLogger);
     setupTabs();
-    JsonTool.bind('format-btn', 'json-input', 'json-output', frontendLogger);
-    Base64Tool.bind('encode-btn', 'decode-btn', 'base64-input', 'base64-output', frontendLogger);
-
     setupTerminalPicker(manager);
 });
 
@@ -44,7 +44,13 @@ function setupTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+                t.querySelectorAll('.tool-input').forEach(el => el.value = '');
+                t.querySelectorAll('.tool-output').forEach(el => {
+                    el.textContent = 'Result will appear here...';
+                });
+            });
             btn.classList.add('active');
             document.getElementById(`${btn.dataset.tab}-tab`).classList.add('active');
         });

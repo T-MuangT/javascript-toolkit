@@ -1,6 +1,6 @@
 {
   "name": "javascript-toolkit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A lightweight JavaScript toolkit for building web applications and utilities.",
   "main": "app.js",
   "scripts": {
