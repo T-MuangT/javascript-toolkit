@@ -1,5 +1,5 @@
-import { ConsoleManager } from './console/console-manager.js';
-import { ToolManager } from './tools/tool-manager.js';
+import { ConsoleManager } from './scripts/console/console-manager.js';
+import { ToolManager } from './scripts/tools/tool-manager.js';
 
 const sshSocket = new WebSocket('ws://localhost:8080');
 
