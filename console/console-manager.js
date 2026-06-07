@@ -1,14 +1,14 @@
 import { FrontendConsole } from './frontend-console.js';
 import { BackendConsole } from './backend-console.js';
-import { SerialConsole } from './serial-console.js';
+import { SSHConsole } from './ssh-console.js';
 
 const TERMINAL_TYPES = {
     frontend: FrontendConsole,
     backend: BackendConsole,
-    serial: SerialConsole,
+    ssh: SSHConsole,
 };
 
-const PROTECTED_TERMINALS = new Set(['frontend', 'serial-1']);
+const PROTECTED_TERMINALS = new Set(['frontend', 'ssh-1']);
 
 export class ConsoleManager {
     constructor(container) {

@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const manager = new ConsoleManager(consoleContainer);
 
     manager.createTerminal('frontend', 'frontend');
-    manager.createTerminal('serial-1', 'serial');
+    manager.createTerminal('ssh-1', 'ssh');
 
     // Loggers defined after terminals exist, so route() is always safe to call
     const frontendLogger = (msg, type) => manager.route('frontend', msg, type);
-    const serialLogger = (msg, type) => manager.route('serial-1', msg, type);
+    const sshLogger = (msg, type) => manager.route('ssh-1', msg, type);
 
     setupTabs();
     JsonTool.bind('format-btn', 'json-input', 'json-output', frontendLogger);

@@ -213,6 +213,30 @@ select {
     border-color: #f00;
 }
 
+/* ─── SSH Terminal Styles ───────────────────────────────── */
+
+.ssh-connect-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.ssh-field {
+    flex: 1 1 120px;
+    background: #252526;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.ssh-field:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
 /* ─── Log Entry Types ───────────────────────────────────── */
 .log-entry { margin: 1px 0; }
 .log-entry.log    { color: #d4d4d4; }
